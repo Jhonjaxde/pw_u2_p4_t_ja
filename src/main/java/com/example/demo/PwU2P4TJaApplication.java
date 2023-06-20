@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 //import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
+import java.util.HashSet;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -15,9 +17,14 @@ import com.example.demo.repository.modelo.Ciudadano;
 import com.example.demo.repository.modelo.Empleado;
 import com.example.demo.repository.modelo.Habitacion;
 import com.example.demo.repository.modelo.Hotel;
+import com.example.demo.repository.modelo.Autor;
+import com.example.demo.repository.modelo.Libro;
+import com.example.demo.service.AutorService;
 import com.example.demo.service.CiudadanoService;
+import com.example.demo.service.EmpleadoService;
 import com.example.demo.service.HabitacionService;
 import com.example.demo.service.HotelService;
+import com.example.demo.service.LibroService;
 
 
 //import com.example.demo.service.EmpleadoService;
@@ -28,10 +35,15 @@ import com.example.demo.service.HotelService;
 public class PwU2P4TJaApplication implements CommandLineRunner {
 	
 	@Autowired
-	private HotelService hotelService;
+	private CiudadanoService ciudadanoService;
 	@Autowired
-	private HabitacionService habitacionService;
-	
+	private EmpleadoService empleadoService;
+	@Autowired
+	private HotelService hotelService; 
+	@Autowired
+	private AutorService autorService;
+	@Autowired
+	private LibroService libroService;
 	
 	
 
@@ -59,7 +71,7 @@ public class PwU2P4TJaApplication implements CommandLineRunner {
 		ciu.setApellido("ojala");
 		this.ciudadanoService.borrar("1745892596");
 		*/
-		Hotel hot = new Hotel();
+		/*Hotel hot = new Hotel();
 		hot.setDireccion("av.carapungo");
 		hot.setNombre("cinco estrellas");
 		
@@ -73,7 +85,33 @@ public class PwU2P4TJaApplication implements CommandLineRunner {
 		habitaciones.add(hab);
 		hot.setHabitaciones(habitaciones);
 		
-		this.hotelService.eliminar("1");
+		this.hotelService.eliminar("1");*/
+		Set<Autor> autores=new HashSet<>();
+		 
+		
+		Autor aut = new Autor();
+		aut.setNombre("Juan");
+		aut.setApellido("Cortez");
+		
+		Autor aut1 = new Autor();
+		aut1.setNombre("Juan");
+		aut1.setApellido("Artegon");
+		
+		autores.add(aut);
+		autores.add(aut1);
+		
+		Set<Libro> libros= new HashSet<>();
+		
+		Libro lib=new Libro();
+		lib.setTitulo("El principito");
+		lib.setEditorial("Santillana");
+	
+		libros.add(lib);
+	
+		lib.setAutores(autores);//aqui por esta cascade en autor
+		
+		this.autorService.eliminar("1");
+		
 		
 		
 	
