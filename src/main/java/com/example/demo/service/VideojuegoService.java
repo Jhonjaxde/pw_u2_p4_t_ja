@@ -16,4 +16,6 @@ public interface VideojuegoService {
 	public Videojuego encontrarPorNombreYPlataforma(String nombre, String plataforma);
 	public List<Videojuego> encontrarListaPorNombreTyped(String nombre);
 	public List<Videojuego> reporteJuegoCosto(String nombre, String plataforma, BigDecimal costo);
+	public int borrarPorNombre(String nombre);
+	public int reporteActualizadoPorPlataforma(String nombre, String plataforma);
 }

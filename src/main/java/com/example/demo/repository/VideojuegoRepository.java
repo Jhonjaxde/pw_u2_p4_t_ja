@@ -18,6 +18,7 @@ public interface VideojuegoRepository {
 	public List<Videojuego> seleccionarListaNombreTyped(String nombre);
 	public List<Videojuego> seleccionarDinamicoVideojuego(String nombre,String plataforma,BigDecimal costo);
 	
-	
+	public int eliminarPorNombre(String nombre);
+	public int actualizarPorPlataforma(String nombre, String plataforma);
 
 }

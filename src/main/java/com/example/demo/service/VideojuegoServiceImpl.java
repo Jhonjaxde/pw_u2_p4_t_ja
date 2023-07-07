@@ -75,4 +75,16 @@ public class VideojuegoServiceImpl implements VideojuegoService{
 		return this.videojuegoRepository.seleccionarDinamicoVideojuego(nombre, plataforma, costo);
 	}
 
+	@Override
+	public int borrarPorNombre(String nombre) {
+		
+		return this.videojuegoRepository.eliminarPorNombre(nombre);
+	}
+
+	@Override
+	public int reporteActualizadoPorPlataforma(String nombre, String plataforma) {
+		
+		return this.videojuegoRepository.actualizarPorPlataforma(nombre, plataforma);
+	}
+
 }

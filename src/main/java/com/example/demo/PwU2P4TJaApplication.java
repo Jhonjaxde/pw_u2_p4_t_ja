@@ -61,7 +61,12 @@ public class PwU2P4TJaApplication implements CommandLineRunner {
 		juego4.setNombre("Spider-man miles morales");
 		juego4.setPlataforma("PC");
 		juego4.setCosto(new BigDecimal(45));
-		//this.service.agregar(juego4);
+		
+		Videojuego juego5 = new Videojuego();
+		juego5.setNombre("GTA 5");
+		juego5.setPlataforma("PC,PS, XBOX");
+		juego5.setCosto(new BigDecimal(20));
+		//this.service.agregar(juego5);
 		
 		//this.service.borrar(2);
 		/*
@@ -76,9 +81,10 @@ public class PwU2P4TJaApplication implements CommandLineRunner {
 		juegos.add(juego2);
 		juegos.add(juego3);
 		juegos.add(juego4);
+		juegos.add(juego5);
 		
 		for(Videojuego vj:juegos) {
-			System.out.println("nombre: "+ vj.getNombre() +" tiene un valor de:" + vj.getCosto());
+			System.out.println("nombre: "+ vj.getNombre() +" para "+vj.getPlataforma() +" tiene un valor de: " + vj.getCosto());
 		}
 		
 		//System.out.println(this.service.encontrarListaPorNombreTyped("Spider-man miles morales"));
@@ -86,9 +92,12 @@ public class PwU2P4TJaApplication implements CommandLineRunner {
 		//System.out.println(this.service.encontrar(1));
 		
 		
-		System.out.println(this.service.reporteJuegoCosto("Resident Evil","PC, PS, XBOX", new BigDecimal(60)));
+		//System.out.println(this.service.reporteJuegoCosto("Resident Evil","PC, PS, XBOX", new BigDecimal(60)));
 		
 		//this.service.reporteJuegoCosto("Spider-man miles morales", "PS", new BigDecimal(45));
+		
+		//this.service.borrarPorNombre("Resident Evil");
+		this.service.reporteActualizadoPorPlataforma("MARVEL spider-man", "PC");
 	
 	}
 
