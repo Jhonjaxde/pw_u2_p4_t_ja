@@ -78,14 +78,17 @@ public class PwU2P4TJaApplication implements CommandLineRunner {
 		juegos.add(juego4);
 		
 		for(Videojuego vj:juegos) {
-			System.out.println("nombre: "+ vj.getNombre());
+			System.out.println("nombre: "+ vj.getNombre() +" tiene un valor de:" + vj.getCosto());
 		}
 		
-		System.out.println(this.service.encontrarListaPorNombreTyped("Spider-man miles morales"));
+		//System.out.println(this.service.encontrarListaPorNombreTyped("Spider-man miles morales"));
+		
+		//System.out.println(this.service.encontrar(1));
 		
 		
+		System.out.println(this.service.reporteJuegoCosto("Resident Evil","PC, PS, XBOX", new BigDecimal(60)));
 		
-		
+		//this.service.reporteJuegoCosto("Spider-man miles morales", "PS", new BigDecimal(45));
 	
 	}
 

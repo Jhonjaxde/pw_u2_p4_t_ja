@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import com.example.demo.repository.modelo.Videojuego;
@@ -14,4 +15,5 @@ public interface VideojuegoService {
 	public List<Videojuego> encontrarListaPorNombre(String nombre);
 	public Videojuego encontrarPorNombreYPlataforma(String nombre, String plataforma);
 	public List<Videojuego> encontrarListaPorNombreTyped(String nombre);
+	public List<Videojuego> reporteJuegoCosto(String nombre, String plataforma, BigDecimal costo);
 }

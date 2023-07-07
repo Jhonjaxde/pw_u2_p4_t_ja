@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,6 +67,12 @@ public class VideojuegoServiceImpl implements VideojuegoService{
 	public List<Videojuego> encontrarListaPorNombreTyped(String nombre) {
 		
 		return this.videojuegoRepository.seleccionarListaNombreTyped(nombre);
+	}
+
+	@Override
+	public List<Videojuego> reporteJuegoCosto(String nombre, String plataforma, BigDecimal costo) {
+		
+		return this.videojuegoRepository.seleccionarDinamicoVideojuego(nombre, plataforma, costo);
 	}
 
 }
