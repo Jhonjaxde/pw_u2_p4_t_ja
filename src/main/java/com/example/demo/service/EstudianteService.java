@@ -3,6 +3,7 @@ package com.example.demo.service;
 import java.util.List;
 
 import com.example.demo.repository.modelo.Estudiante;
+import com.example.demo.repository.modelo.dto.EstudianteDTO;
 
 public interface EstudianteService {
 	
@@ -14,4 +15,6 @@ public interface EstudianteService {
 	public Estudiante encontrarPorApellidoTyped(String apellido);
 	public List<Estudiante> encontrarListaPorApellido(String apellido);
 	public Estudiante encontrarPorApellidoyNombre(String apellido, String nombre);
+	public List<EstudianteDTO> encontrarTodosDTO( );
+	public List<EstudianteDTO> encontrarTodosDTOConCedula( );
 }

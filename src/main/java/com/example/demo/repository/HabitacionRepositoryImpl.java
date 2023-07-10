@@ -31,14 +31,14 @@ public class HabitacionRepositoryImpl  implements HabitacionRepository{
 	}
 
 	@Override
-	public void eliminar(String id) {
+	public void eliminar(Integer id) {
 		// TODO Auto-generated method stub
 		Habitacion hab=this.buscar(id);
 		this.entityManager.remove(hab);
 	}
 
 	@Override
-	public Habitacion buscar(String id) {
+	public Habitacion buscar(Integer id) {
 		// TODO Auto-generated method stub
 		return this.entityManager.find(Habitacion.class, id);
 	}

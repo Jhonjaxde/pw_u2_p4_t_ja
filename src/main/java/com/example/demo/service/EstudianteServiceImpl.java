@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.repository.modelo.Estudiante;
+import com.example.demo.repository.modelo.dto.EstudianteDTO;
 
 import jakarta.persistence.Query;
 
@@ -60,6 +61,18 @@ public class EstudianteServiceImpl implements EstudianteService {
 	@Override
 	public Estudiante encontrarPorApellidoTyped(String apellido) {
 		return this.estudianteRepo.seleccionarPorApellidoTyped(apellido);
+	}
+
+	@Override
+	public List<EstudianteDTO> encontrarTodosDTO() {
+		// TODO Auto-generated method stub
+		return this.estudianteRepo.seleccionarTodosDTO();
+	}
+
+	@Override
+	public List<EstudianteDTO> encontrarTodosDTOConCedula() {
+		// TODO Auto-generated method stub
+		return this.estudianteRepo.seleccionarTodosDTOConCedula();
 	}
 
 }

@@ -1,18 +1,28 @@
 package com.example.demo;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-
+import com.example.demo.repository.HotelRepository;
+import com.example.demo.repository.modelo.Alumno;
+import com.example.demo.repository.modelo.Estudiante;
+import com.example.demo.repository.modelo.Habitacion;
+import com.example.demo.repository.modelo.Hotel;
+import com.example.demo.repository.modelo.Materia;
+import com.example.demo.repository.modelo.Matricula;
 import com.example.demo.repository.modelo.Videojuego;
-
+import com.example.demo.service.EstudianteService;
+import com.example.demo.service.HabitacionService;
+import com.example.demo.service.HotelService;
+import com.example.demo.service.MatriculaService;
 import com.example.demo.service.VideojuegoService;
 
 
@@ -29,9 +39,18 @@ public class PwU2P4TJaApplication implements CommandLineRunner {
 	@Autowired
 	private VideojuegoService service;
 	
+	@Autowired
+	private EstudianteService estudianteService;
+	@Autowired
+	private MatriculaService matriculaService;
 	
-
+	@Autowired
+	private HotelService hotelService;	
 	
+	@Autowired
+	private HabitacionService habitacionService;
+	@Autowired
+	private HotelRepository hotelRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(PwU2P4TJaApplication.class, args);
@@ -66,14 +85,7 @@ public class PwU2P4TJaApplication implements CommandLineRunner {
 		juego5.setNombre("GTA 5");
 		juego5.setPlataforma("PC,PS, XBOX");
 		juego5.setCosto(new BigDecimal(20));
-		//this.service.agregar(juego5);
 		
-		//this.service.borrar(2);
-		/*
-		System.out.println(this.service.encontrarPorNombre(juego2.getNombre()));
-		System.out.println(this.service.encontrarPorNombreYPlataforma("Spider-man miles morales", "PC"));
-		System.out.println(this.service.encontrarPorNombreTyped("Devil May Cry"));
-		*/
 	
 
 		List<Videojuego> juegos = new ArrayList<>();
@@ -83,22 +95,63 @@ public class PwU2P4TJaApplication implements CommandLineRunner {
 		juegos.add(juego4);
 		juegos.add(juego5);
 		
-		for(Videojuego vj:juegos) {
+		/*for(Videojuego vj:juegos) {
 			System.out.println("nombre: "+ vj.getNombre() +" para "+vj.getPlataforma() +" tiene un valor de: " + vj.getCosto());
 		}
+		*/
 		
-		//System.out.println(this.service.encontrarListaPorNombreTyped("Spider-man miles morales"));
+		Materia mat = new Materia();
+		mat.setNombre("orientacion sexual");
 		
-		//System.out.println(this.service.encontrar(1));
+		
+		Alumno alu = new Alumno();
+		alu.setNombre("Jhonzote");
+		
+				
+		Matricula matri = new Matricula();
+		matri.setFecha(LocalDateTime.now());
+		matri.setNumero("65");
+		matri.setAlumno(alu);
+		matri.setMateria(mat);
+		//this.matriculaService.agregar(matri);
+				
+		//this.habitacionService.eliminar(2);
+		Habitacion hab = new Habitacion();
+		hab.setNumero("78");
+		hab.setValor(new BigDecimal(988));
 		
 		
-		//System.out.println(this.service.reporteJuegoCosto("Resident Evil","PC, PS, XBOX", new BigDecimal(60)));
+		Habitacion hab1 = new Habitacion();
+		hab1.setNumero("13");
+		hab1.setValor(new BigDecimal(918));
 		
-		//this.service.reporteJuegoCosto("Spider-man miles morales", "PS", new BigDecimal(45));
 		
-		//this.service.borrarPorNombre("Resident Evil");
-		this.service.reporteActualizadoPorPlataforma("MARVEL spider-man", "PC");
-	
+		List<Habitacion> habitaciones = new ArrayList<>();
+		habitaciones.add(hab);
+		habitaciones.add(hab1);
+		
+		Hotel ho = new Hotel();
+		ho.setNombre("cincoestrellitas");
+		ho.setDireccion("av.carapungo");
+		ho.setHabitaciones(habitaciones);
+		hab.setHotel(ho);
+		hab1.setHotel(ho);
+		//this.hotelService.guardar(ho);
+		
+		/*System.out.println(this.hotelService.buscar(4).getNombre());
+		
+		for(Habitacion h: this.hotelService.buscar(4).getHabitaciones()) {
+			System.out.println(h.getNumero());
+		}*/
+		
+		//this.hotelRepository.buscar(4).getHabitaciones().size();
+		//hotelRepository.buscar(4).getHabitaciones().size();
+		//System.out.println("cantidad de habitaciones: "+ho.getHabitaciones().size());
+		System.out.println(this.estudianteService.encontrarTodosDTO());
+		
+		System.out.println(this.estudianteService.encontrarTodosDTOConCedula());
+		//System.out.println(this.estudianteService.encontrar(7).getCedula());
+		
 	}
 
 }

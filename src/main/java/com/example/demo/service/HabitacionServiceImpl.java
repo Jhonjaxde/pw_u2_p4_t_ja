@@ -25,13 +25,13 @@ public class HabitacionServiceImpl implements HabitacionService{
 	}
 
 	@Override
-	public void eliminar(String id) {
+	public void eliminar(Integer id) {
 		// TODO Auto-generated method stub
 		this.habitacionRepository.eliminar(id);
 	}
 
 	@Override
-	public Habitacion buscar(String id) {
+	public Habitacion buscar(Integer id) {
 		// TODO Auto-generated method stub
 		return this.habitacionRepository.buscar(id);
 	}
